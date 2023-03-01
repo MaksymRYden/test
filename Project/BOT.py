@@ -1,8 +1,8 @@
 import aiogram
 import requests
 
-BOT_TOKEN = "5894518933:AAFtgb13gAvogqA0OPAgEaAJF1ERnmIBewY"
-OPENWEATHERMAP_API_KEY = "ab86d5119a251546f0539855f500a1af"
+BOT_TOKEN = ""
+OPENWEATHERMAP_API_KEY = ""
 
 bot = aiogram.Bot(token=BOT_TOKEN)
 dp = aiogram.Dispatcher(bot)
@@ -27,7 +27,6 @@ async def send_weather(message: aiogram.types.Message):
         await bot.send_message(message.chat.id, "Sorry, I couldn't get the weather for that location. Please try again.", reply_markup=custom_keyboard)
         return
 
-    # Parse the response and format the message
     weather_data = response.json()
     weather_description = weather_data["weather"][0]["description"].capitalize()
     temperature = weather_data["main"]["temp"]
